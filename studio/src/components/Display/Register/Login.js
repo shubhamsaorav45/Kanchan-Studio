@@ -1,18 +1,46 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
+import { useNavigate } from "react-router-dom"; 
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const [loginError, setLoginError] = useState(null); // State to track login error
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here
+
+    fetch(`http://localhost:8080/studio/login?email=${email}&password=${password}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text(); 
+      })
+      .then(data => {
+        if (data === 'Login Successful') {
+          console.log('Login Successful');
+          navigate("/");
+        } else {
+          console.error('Login Failed');
+          setLoginError('Login Failed'); // Set login error message
+        }
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+
+    setEmail('');
+    setPassword('');
   };
 
   const handleRegisterClick = () => {
-    navigate("/register"); // Use navigate instead of history.push
+    navigate("/register"); 
   };
 
   return (
@@ -22,6 +50,14 @@ export default function Login() {
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-semibold mb-4 text-center">Login</h2>
+
+        {/* Login Error Message */}
+        {loginError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+            {loginError}
+          </div>
+        )}
+
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
             Email Address

@@ -5,9 +5,19 @@ import SampleImage1 from '../../Header/cover2.png';
 import SampleImage2 from '../../Header/cover3.JPG';
 import SampleImage3 from '../../Header/cover4.jpg';
 import SampleImage4 from '../../Header/cover5.jpg';
+import GlimpseImage1 from '../Images/glimpseimg 1.jpg';
+import GlimpseImage2 from '../Images/glimpseimg (2).jpg';
+import GlimpseImage3 from '../Images/glimpseimg (3).jpg';
+import GlimpseImage5 from '../Images/glimpseimg (5).jpg';
+import GlimpseImage6 from '../Images/glimpseimg (6).jpg';
+import GlimpseImage4 from '../Images/glimpseimg (4).jpg';
+
+import GlimpseImage8 from '../Images/glimpseimg (8).JPG';
+import GlimpseImage9 from '../Images/glimpseimg (9).JPG';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
 
 const Home = () => {
   const settings = {
@@ -149,6 +159,27 @@ const Home = () => {
                 Read more
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className='image bg-gray-100 p-6 '>
+        <h1 className='font-bold text-3xl text-center p-2'>GLIMPSE OF OUR WORK</h1>
+        <div >
+          <div className='grid grid-cols-2 gap-2 rounded-lg overflow-hidden shadow-md'>
+
+            <img src={GlimpseImage2} alt='For Details' />
+            <img src={GlimpseImage3} alt='For Details' />
+            <img src={GlimpseImage5} alt='For Details' />
+            <img src={GlimpseImage6} alt='For Details' />
+     
+          </div>
+          <div className='grid grid-cols-2 gap-2 p-6 rounded-lg overflow-hidden shadow-md'>
+            <img src={GlimpseImage1} alt='For Details' />
+            <img src={GlimpseImage9} alt='For Details' />
+            <img src={GlimpseImage8} alt='For Details' />
+            <img src={GlimpseImage4} alt='For Details' />
+        
+           
           </div>
         </div>
       </div>
